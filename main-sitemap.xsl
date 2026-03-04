@@ -11,10 +11,10 @@
 			<head>
 				<xsl:choose>
 					<xsl:when test="kml:kml">
-						<title>Locations Sitemap - Levene Energy</title>
+						<title>Locations Sitemap - Levene Energies</title>
 					</xsl:when>
 					<xsl:otherwise>
-						<title>XML Sitemap - Levene Energy</title>
+						<title>XML Sitemap - Levene Energies</title>
 					</xsl:otherwise>
 				</xsl:choose>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
