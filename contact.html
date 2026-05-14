@@ -23,30 +23,24 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon">
-
-  <!--Google Analytics GA4-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GT-MJBVZ5P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GT-MJBVZ5P');
-  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NNL3J7HCPZ');
+</script>
 
   <link rel="stylesheet" href="./css/style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
- 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     emailjs.init('jkvw2eb_Ngzf5kamN');
   </script>
-
-  
 </head>
 <body class="contact-page">
-
-  
 
 <div id="header-placeholder"></div>
 
@@ -215,7 +209,6 @@
     </div>
   </div>
 
-
   <div class="contact-form-wrap">
     <h3>Send us a message</h3>
 
@@ -273,9 +266,8 @@
         <div class="form-error" id="err-message">Please enter your message (minimum 10 characters).</div>
       </div>
 
-
       <div class="recaptcha-wrap">
-        <div class="g-recaptcha-holder" ">
+        <div class="g-recaptcha-holder">
           <div class="g-recaptcha" id="recaptcha-contact"></div>
         </div>
         <div class="form-error" id="err-recaptcha-contact">Please confirm you are not a robot.</div>
@@ -294,7 +286,7 @@
 
 </section>
 
-<!-- ===== NEWSLETTER SECTION ===== -->
+<!-- NEWSLETTER SECTION -->
 <section class="newsletter-section">
   <div class="newsletter-inner">
 
@@ -326,7 +318,6 @@
               placeholder="Enter your email address"
               autocomplete="email"
             />
-        
             <div style="position:absolute;left:-5000px;" aria-hidden="true">
               <input type="text" name="b_a2d642d24877529e9a24d2570_9ebe6f0542" tabindex="-1" value="">
             </div>
@@ -362,9 +353,9 @@
     .then(html => document.getElementById('footer-placeholder').innerHTML = html)
     .catch(err => console.error('Failed to load footer:', err));
 
-  var EMAILJS_SERVICE_ID          = 'service_o232uzj';
-  var EMAILJS_CONTACT_TEMPLATE    = 'template_i2gbink';
-  var RECAPTCHA_SITE_KEY          = '6LcFZfMrAAAAAN83GfWDGh3yVZPqqIVrN3Gkup97';
+  var EMAILJS_SERVICE_ID       = 'service_o232uzj';
+  var EMAILJS_CONTACT_TEMPLATE = 'template_i2gbink';
+  var RECAPTCHA_SITE_KEY       = '6LcFZfMrAAAAAN83GfWDGh3yVZPqqIVrN3Gkup97';
 
   var recaptchaContactWidget;
   var recaptchaNewsletterWidget;
@@ -397,7 +388,7 @@
     gtag('event', 'office_tab_click', { office_name: officeNames[index] });
   }
 
-  // ─── Contact Form ───────────
+  // ─── Contact Form ─────────────────────────────────────────────────────────
   function submitForm() {
     var fields = [
       { id: 'f-name',    err: 'err-name',    check: function(v) { return v.trim().length > 0; } },
@@ -417,7 +408,6 @@
       if (!ok) valid = false;
     });
 
-  
     var recaptchaResponse = grecaptcha.getResponse(recaptchaContactWidget);
     var recaptchaErr = document.getElementById('err-recaptcha-contact');
     if (!recaptchaResponse) {
@@ -434,8 +424,9 @@
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
 
     var templateParams = {
-      from_name:    document.getElementById('f-name').value.trim() + ' ' + document.getElementById('f-surname').value.trim(),
-      from_email:   document.getElementById('f-email').value.trim(),
+      firstName:    document.getElementById('f-name').value.trim(),
+      lastName:     document.getElementById('f-surname').value.trim(),
+      email:        document.getElementById('f-email').value.trim(),
       phone:        document.getElementById('f-phone').value.trim() || 'Not provided',
       organisation: document.getElementById('f-company').value.trim() || 'Not provided',
       subject:      document.getElementById('f-subject').value,
@@ -456,7 +447,6 @@
         document.getElementById('f-subject').selectedIndex = 0;
         document.getElementById('f-message').value = '';
 
-
         fields.forEach(function(f) {
           document.getElementById(f.id).classList.remove('invalid');
           document.getElementById(f.err).classList.remove('show');
@@ -476,32 +466,31 @@
         gtag('event', 'contact_form_error', { error_message: error.text || 'unknown' });
       });
   }
-  // ─── Newsletter ───
-document.getElementById('mailchimp-form').addEventListener('submit', function(e) {
-  var emailInput     = document.getElementById('nl-email');
-  var emailRow       = document.getElementById('nl-email-row');
-  var errEl          = document.getElementById('nl-err');
-  var recaptchaErrEl = document.getElementById('nl-err-recaptcha');
-  var email          = emailInput.value.trim();
-  var emailValid     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  var recaptchaResp  = grecaptcha.getResponse(recaptchaNewsletterWidget);
-  var recaptchaValid = recaptchaResp.length > 0;
 
-  emailRow.classList.toggle('invalid', !emailValid);
-  errEl.style.display          = emailValid    ? 'none'  : 'block';
-  recaptchaErrEl.style.display = recaptchaValid ? 'none' : 'block';
+  // ─── Newsletter ───────────────────────────────────────────────────────────
+  document.getElementById('mailchimp-form').addEventListener('submit', function(e) {
+    var emailInput     = document.getElementById('nl-email');
+    var emailRow       = document.getElementById('nl-email-row');
+    var errEl          = document.getElementById('nl-err');
+    var recaptchaErrEl = document.getElementById('nl-err-recaptcha');
+    var email          = emailInput.value.trim();
+    var emailValid     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var recaptchaResp  = grecaptcha.getResponse(recaptchaNewsletterWidget);
+    var recaptchaValid = recaptchaResp.length > 0;
 
-  if (!emailValid || !recaptchaValid) {
-    e.preventDefault();
-    return;
-  }
+    emailRow.classList.toggle('invalid', !emailValid);
+    errEl.style.display           = emailValid    ? 'none'  : 'block';
+    recaptchaErrEl.style.display  = recaptchaValid ? 'none' : 'block';
 
-  gtag('event', 'newsletter_subscribe', { source: 'contact_page' });
+    if (!emailValid || !recaptchaValid) {
+      e.preventDefault();
+      return;
+    }
 
-});
+    gtag('event', 'newsletter_subscribe', { source: 'contact_page' });
+  });
 </script>
 
-->
 <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
 
 </body>
