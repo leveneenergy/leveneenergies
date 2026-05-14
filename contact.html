@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us-Levene Energies Limited</title>
+  <meta name="description" content="Get in touch with Levene Energies Limited. Offices in Lagos, Abuja, London and Mauritius."/>
+  <meta name="keywords" content="contact, Levene Energies, Lagos, Abuja, London, Mauritius"/>
+  <meta name="author" content="Levene Energies Limited"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="language" content="English"/>
+  <meta property="og:title" content="Contact Us — Levene Energies Limited"/>
+  <meta property="og:description" content="Reach out for partnerships, investments, media, or general enquiries."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="./image/levenelogo.png"/>
+  <meta property="og:url" content="https://leveneenergies.com/contact.html"/>
+  <meta property="og:site_name" content="Levene Energies Limited"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Contact Us"/>
+  <meta name="twitter:description" content="Get in touch with Levene Energies Limited"/>
+  <meta name="twitter:image" content="./image/levenelogo.png"/>
+  <link rel="canonical" href="https://leveneenergies.com/contact.html"/>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon">
+
+  <!--Google Analytics GA4-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GT-MJBVZ5P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GT-MJBVZ5P');
+  </script>
+
+  <link rel="stylesheet" href="./css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('jkvw2eb_Ngzf5kamN');
+  </script>
+
+  
+</head>
+<body class="contact-page">
+
+  
+
+<div id="header-placeholder"></div>
+
+<script>
+  fetch('header.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Header file not found');
+      return r.text();
+    })
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      initNav();
+    })
+    .catch(err => console.error('Failed to load header:', err));
+
+  function initNav() {
+    const hamburger = document.getElementById('hamburger');
+    const navList   = document.getElementById('nav-list');
+    const navClose  = document.getElementById('nav-close');
+
+    if (hamburger && navList) {
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navList.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (navClose) {
+      navClose.addEventListener('click', function() {
+        navList.classList.remove('open');
+        document.body.style.overflow = '';
+        document.querySelectorAll('.nav-list .dropdown').forEach(function(d) {
+          d.classList.remove('mob-open');
+        });
+      });
+    }
+
+    document.addEventListener('click', function(e) {
+      if (navList && navList.classList.contains('open')) {
+        if (!navList.contains(e.target) && e.target !== hamburger) {
+          navList.classList.remove('open');
+          document.body.style.overflow = '';
+          document.querySelectorAll('.nav-list .dropdown').forEach(function(d) {
+            d.classList.remove('mob-open');
+          });
+        }
+      }
+    });
+
+    document.querySelectorAll('.nav-list .dropdown > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth > 768) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var dropdown = link.closest('.dropdown');
+        var isOpen   = dropdown.classList.contains('mob-open');
+        document.querySelectorAll('.nav-list .dropdown').forEach(function(d) {
+          d.classList.remove('mob-open');
+        });
+        if (!isOpen) dropdown.classList.add('mob-open');
+      });
+    });
+
+    document.querySelectorAll('.nav-list > li:not(.dropdown) > a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth > 768) return;
+        navList.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-label">Get In Touch</div>
+    <h1>Contact <em>Us</em></h1>
+    <p>We welcome enquiries from investors, partners, suppliers and community stakeholders. Reach out to any of our global offices.</p>
+    <div class="breadcrumb">
+      <a href="./index.html">Home</a><span>/</span><span>Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+
+  <div class="contact-info">
+    <h2>Our global <em>offices</em></h2>
+    <p style="color:var(--muted);margin-bottom:1.75rem">Levene Energies Limited operates from four locations, combining deep local knowledge with international reach.</p>
+
+    <div class="office-tab-bar">
+      <button class="office-tab-btn active" data-index="0" onclick="showOffice(0, this)">Lagos</button>
+      <button class="office-tab-btn" data-index="1" onclick="showOffice(1, this)">Abuja</button>
+      <button class="office-tab-btn" data-index="2" onclick="showOffice(2, this)">London</button>
+      <button class="office-tab-btn" data-index="3" onclick="showOffice(3, this)">Mauritius</button>
+    </div>
+
+    <div class="office-list">
+      <div class="office-item" id="office-0">
+        <div class="office-country">Nigeria — Lagos</div>
+        <div class="office-address">
+          Levene Energies Limited<br/>
+          19B Ilabere Avenue, Ikoyi,<br/>
+          Lagos, Nigeria<br/><br/>
+          <i class="fas fa-phone" style="color:var(--green);margin-right:.4rem"></i>
+          <a href="tel:+2349062892870">+234 (0) 906 289 2870</a><br/>
+          <i class="fas fa-envelope" style="color:var(--green);margin-right:.4rem"></i>
+          <a href="mailto:info@leveneenergies.com">info@leveneenergies.com</a>
+        </div>
+      </div>
+
+      <div class="office-item" id="office-1" style="display:none">
+        <div class="office-country">Nigeria — Abuja</div>
+        <div class="office-address">
+          Levene Energies Limited<br/>
+          9 Thaba Tseka Street,<br/>
+          Wuse 2, Abuja FCT, Nigeria<br/><br/>
+          <i class="fas fa-phone" style="color:var(--green);margin-right:.4rem"></i>
+          <a href="tel:+2349062948514">+234 (0) 906 294 8514</a>
+        </div>
+      </div>
+
+      <div class="office-item" id="office-2" style="display:none">
+        <div class="office-country">United Kingdom — London</div>
+        <div class="office-address">
+          Levene Energies Limited<br/>
+          16 Berkeley Street,<br/>
+          London W1J 8DZ,<br/>
+          United Kingdom<br/><br/>
+          <i class="fas fa-envelope" style="color:var(--green);margin-right:.4rem"></i>
+          <a href="mailto:londonoffice@leveneenergies.com">londonoffice@leveneenergies.com</a>
+        </div>
+      </div>
+
+      <div class="office-item" id="office-3" style="display:none">
+        <div class="office-country">Mauritius — Port Louis</div>
+        <div class="office-address">
+          Levene Energies Limited<br/>
+          No. 6 Ken Lee Building,<br/>
+          20 Edith Cavell Street,<br/>
+          Port Louis, Mauritius<br/><br/>
+          <i class="fas fa-phone" style="color:var(--green);margin-right:.4rem"></i>
+          <a href="tel:+2302600342">+230 260 0342</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-section" id="map-container">
+      <iframe id="office-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7296428936937!2d3.4278!3d6.4488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53b3b4e4f41%3A0x0!2sIkoyi%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Levene Energies Limited — Lagos Office">
+      </iframe>
+    </div>
+
+    <div style="margin-top:2.5rem">
+      <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--navy);margin-bottom:.85rem">Follow Us</h3>
+      <div style="display:flex;gap:.65rem;flex-wrap:wrap">
+        <a href="https://www.linkedin.com/company/leveneenergies/" target="_blank" class="btn btn--outline-dark" style="padding:.55rem 1rem;font-size:.75rem"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://x.com/LeveneEnergies" target="_blank" class="btn btn--outline-dark" style="padding:.55rem 1rem;font-size:.75rem"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/leveneenergies/" target="_blank" class="btn btn--outline-dark" style="padding:.55rem 1rem;font-size:.75rem"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="contact-form-wrap">
+    <h3>Send us a message</h3>
+
+    <div class="form-success" id="form-success" style="display:none">
+      <i class="fas fa-check-circle" style="font-size:1.2rem"></i>
+      Thank you — your message has been sent. We'll be in touch shortly.
+    </div>
+
+    <div id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-name">First Name *</label>
+          <input type="text" id="f-name" />
+          <div class="form-error" id="err-name">Please enter your first name.</div>
+        </div>
+        <div class="form-group">
+          <label for="f-surname">Last Name *</label>
+          <input type="text" id="f-surname"/>
+          <div class="form-error" id="err-surname">Please enter your last name.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="f-email">Email Address *</label>
+        <input type="email" id="f-email" />
+        <div class="form-error" id="err-email">Please enter a valid email address.</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-phone">Phone Number</label>
+          <input type="tel" id="f-phone" />
+        </div>
+        <div class="form-group">
+          <label for="f-company">Organisation</label>
+          <input type="text" id="f-company" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="f-subject">Subject *</label>
+        <select id="f-subject">
+          <option value="" disabled selected>Select a subject</option>
+          <option>General Enquiry</option>
+          <option>Business Partnership</option>
+          <option>Subsidiaries</option>
+          <option>Other</option>
+        </select>
+        <div class="form-error" id="err-subject">Please select a subject.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="f-message">Message *</label>
+        <textarea id="f-message" rows="6" placeholder="Tell us about your enquiry…"></textarea>
+        <div class="form-error" id="err-message">Please enter your message (minimum 10 characters).</div>
+      </div>
+
+
+      <div class="recaptcha-wrap">
+        <div class="g-recaptcha-holder" ">
+          <div class="g-recaptcha" id="recaptcha-contact"></div>
+        </div>
+        <div class="form-error" id="err-recaptcha-contact">Please confirm you are not a robot.</div>
+      </div>
+
+      <p class="form-notice">
+        <i class="fas fa-lock" style="color:var(--green); padding-top:10px;"></i>
+        Your information is protected and will never be shared with third parties.
+      </p>
+
+      <button class="btn btn--primary" id="submit-btn" onclick="submitForm()" style="width:100%;justify-content:center;">
+        Send Message <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== NEWSLETTER SECTION ===== -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+
+    <div class="newsletter-copy">
+      <div class="newsletter-label">Stay Informed</div>
+      <h2>Subscribe to our <em>Newsletter</em></h2>
+      <p>
+        Receive curated insights on African energy markets, project updates, investment trends, and Levene Energies news — delivered directly to your inbox.
+      </p>
+    </div>
+
+    <div class="newsletter-form-panel">
+      <h3>Get the latest from Levene</h3>
+      <p>Join investors, partners and energy professionals already subscribed.</p>
+
+      <div id="nl-form">
+        <form
+          id="mailchimp-form"
+          action="https://leveneenergy.us21.list-manage.com/subscribe/post?u=a2d642d24877529e9a24d2570&id=9ebe6f0542&f_id=00598ee6f0"
+          method="post"
+          target="_blank"
+          novalidate
+        >
+          <div class="newsletter-email-row" id="nl-email-row">
+            <input
+              type="email"
+              name="EMAIL"
+              id="nl-email"
+              placeholder="Enter your email address"
+              autocomplete="email"
+            />
+        
+            <div style="position:absolute;left:-5000px;" aria-hidden="true">
+              <input type="text" name="b_a2d642d24877529e9a24d2570_9ebe6f0542" tabindex="-1" value="">
+            </div>
+            <button type="submit" class="newsletter-submit-btn" id="nl-submit-btn">
+              Subscribe <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+          <div class="newsletter-err" id="nl-err" style="display:none;">Please enter a valid email address.</div>
+
+          <div class="recaptcha-wrap" style="padding: 1px; margin-top: 8px;">
+            <div class="g-recaptcha-holder">
+              <div class="g-recaptcha" id="recaptcha-newsletter"></div>
+            </div>
+            <div class="newsletter-err" id="nl-err-recaptcha" style="display:none;">Please confirm you are not a robot.</div>
+          </div>
+
+          <p class="newsletter-privacy">
+            <i class="fas fa-shield-alt"></i>
+            Your email is safe with us. We never sell or share your data with third parties.
+          </p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('footer-placeholder').innerHTML = html)
+    .catch(err => console.error('Failed to load footer:', err));
+
+  var EMAILJS_SERVICE_ID          = 'service_o232uzj';
+  var EMAILJS_CONTACT_TEMPLATE    = 'template_i2gbink';
+  var RECAPTCHA_SITE_KEY          = '6LcFZfMrAAAAAN83GfWDGh3yVZPqqIVrN3Gkup97';
+
+  var recaptchaContactWidget;
+  var recaptchaNewsletterWidget;
+
+  window.onRecaptchaLoad = function() {
+    recaptchaContactWidget = grecaptcha.render('recaptcha-contact', {
+      sitekey: RECAPTCHA_SITE_KEY
+    });
+    recaptchaNewsletterWidget = grecaptcha.render('recaptcha-newsletter', {
+      sitekey: RECAPTCHA_SITE_KEY
+    });
+  };
+
+  const officeMaps = {
+    0: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7296428936937!2d3.4278!3d6.4488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53b3b4e4f41%3A0x0!2sIkoyi%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000",
+    1: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d7.48!3d9.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0a0b0b0b0b0b%3A0x0!2sWuse%202%2C%20Abuja!5e0!3m2!1sen!2sng!4v1700000000000",
+    2: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.5!2d-0.146!3d51.507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b9b0b0b0b0%3A0x0!2sBerkeley%20Street%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000",
+    3: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.5!2d57.5!3d-20.16!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x217c5b0b0b0b0b0b%3A0x0!2sPort%20Louis%2C%20Mauritius!5e0!3m2!1sen!2smu!4v1700000000000"
+  };
+
+  function showOffice(index, btn) {
+    document.querySelectorAll('.office-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.office-item').forEach((item, i) => {
+      item.style.display = i === index ? 'block' : 'none';
+    });
+    const iframe = document.getElementById('office-map');
+    if (iframe && officeMaps[index]) iframe.src = officeMaps[index];
+    const officeNames = ['Lagos', 'Abuja', 'London', 'Mauritius'];
+    gtag('event', 'office_tab_click', { office_name: officeNames[index] });
+  }
+
+  // ─── Contact Form ───────────
+  function submitForm() {
+    var fields = [
+      { id: 'f-name',    err: 'err-name',    check: function(v) { return v.trim().length > 0; } },
+      { id: 'f-surname', err: 'err-surname', check: function(v) { return v.trim().length > 0; } },
+      { id: 'f-email',   err: 'err-email',   check: function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+      { id: 'f-subject', err: 'err-subject', check: function(v) { return v !== ''; } },
+      { id: 'f-message', err: 'err-message', check: function(v) { return v.trim().length > 10; } },
+    ];
+
+    var valid = true;
+    fields.forEach(function(f) {
+      var el  = document.getElementById(f.id);
+      var err = document.getElementById(f.err);
+      var ok  = f.check(el.value);
+      el.classList.toggle('invalid', !ok);
+      err.classList.toggle('show', !ok);
+      if (!ok) valid = false;
+    });
+
+  
+    var recaptchaResponse = grecaptcha.getResponse(recaptchaContactWidget);
+    var recaptchaErr = document.getElementById('err-recaptcha-contact');
+    if (!recaptchaResponse) {
+      recaptchaErr.classList.add('show');
+      valid = false;
+    } else {
+      recaptchaErr.classList.remove('show');
+    }
+
+    if (!valid) return;
+
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+
+    var templateParams = {
+      from_name:    document.getElementById('f-name').value.trim() + ' ' + document.getElementById('f-surname').value.trim(),
+      from_email:   document.getElementById('f-email').value.trim(),
+      phone:        document.getElementById('f-phone').value.trim() || 'Not provided',
+      organisation: document.getElementById('f-company').value.trim() || 'Not provided',
+      subject:      document.getElementById('f-subject').value,
+      message:      document.getElementById('f-message').value.trim()
+    };
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE, templateParams)
+      .then(function() {
+        var successEl = document.getElementById('form-success');
+        successEl.style.display = 'block';
+        setTimeout(function() { successEl.style.display = 'none'; }, 5000);
+
+        document.getElementById('f-name').value    = '';
+        document.getElementById('f-surname').value = '';
+        document.getElementById('f-email').value   = '';
+        document.getElementById('f-phone').value   = '';
+        document.getElementById('f-company').value = '';
+        document.getElementById('f-subject').selectedIndex = 0;
+        document.getElementById('f-message').value = '';
+
+
+        fields.forEach(function(f) {
+          document.getElementById(f.id).classList.remove('invalid');
+          document.getElementById(f.err).classList.remove('show');
+        });
+
+        grecaptcha.reset(recaptchaContactWidget);
+        btn.disabled = false;
+        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        gtag('event', 'contact_form_submit', { subject: templateParams.subject });
+      })
+      .catch(function(error) {
+        console.error('EmailJS contact error:', error);
+        btn.disabled = false;
+        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        grecaptcha.reset(recaptchaContactWidget);
+        alert('Something went wrong. Please try again or email us at info@leveneenergies.com');
+        gtag('event', 'contact_form_error', { error_message: error.text || 'unknown' });
+      });
+  }
+  // ─── Newsletter ───
+document.getElementById('mailchimp-form').addEventListener('submit', function(e) {
+  var emailInput     = document.getElementById('nl-email');
+  var emailRow       = document.getElementById('nl-email-row');
+  var errEl          = document.getElementById('nl-err');
+  var recaptchaErrEl = document.getElementById('nl-err-recaptcha');
+  var email          = emailInput.value.trim();
+  var emailValid     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  var recaptchaResp  = grecaptcha.getResponse(recaptchaNewsletterWidget);
+  var recaptchaValid = recaptchaResp.length > 0;
+
+  emailRow.classList.toggle('invalid', !emailValid);
+  errEl.style.display          = emailValid    ? 'none'  : 'block';
+  recaptchaErrEl.style.display = recaptchaValid ? 'none' : 'block';
+
+  if (!emailValid || !recaptchaValid) {
+    e.preventDefault();
+    return;
+  }
+
+  gtag('event', 'newsletter_subscribe', { source: 'contact_page' });
+
+});
+</script>
+
+->
+<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+
+</body>
+</html>
