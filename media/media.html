@@ -12,21 +12,21 @@
   <meta property="og:title" content="Media Centre — Levene Energies Limited"/>
   <meta property="og:description" content="Gallery, press releases, blog articles and latest updates from Levene Energies."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="./image/levenelogo.png"/>
+  <meta property="og:image" content="/leveneenergies/image/levenelogo.png"/>
   <meta property="og:url" content="https://leveneenergies.com/media.html"/>
   <meta property="og:site_name" content="Levene Energies Limited"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Media Centre"/>
   <meta name="twitter:description" content="Latest updates, press releases and blog articles"/>
-  <meta name="twitter:image" content="./image/levenelogo.png"/>
+  <meta name="twitter:image" content="/leveneenergies/image/levenelogo.png"/>
   <link rel="canonical" href="https://leveneenergies.com/media.html"/>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon">
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/media.css">
+  <link rel="shortcut icon" href="/leveneenergies/image/levene-energies.png" type="image/x-icon">
+  <link rel="stylesheet" href="/leveneenergies/css/style.css" />
+  <link rel="stylesheet" href="/leveneenergies/css/media.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- Google tag (gtag.js) -->
+     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -39,7 +39,7 @@
 
   <div id="header-placeholder"></div>
 <script>
-  fetch('header.html')
+  fetch('/leveneenergies/components/header.html')
     .then(r => {
       if (!r.ok) throw new Error('Header file not found');
       return r.text();
@@ -105,7 +105,7 @@
     <h1>MEDIA</h1>
     <p>Stay up to date with Levene Energies Limited - images from our operations, upcoming events, and official communications.</p>
     <div class="breadcrumb">
-      <a href="index.html">Home</a><span>/</span><span>Media</span>
+      <a href="/leveneenergies/">Home</a><span>/</span><span>Media</span>
     </div>
   </div>
 </section>
@@ -123,7 +123,7 @@
       <i class="fas fa-newspaper"></i> Press Releases
     </button>
     <button class="tab-btn" data-tab="blog" role="tab" aria-selected="false" aria-controls="panel-blog">
-      <img src="./image/Blog.svg" alt="Blog" style="vertical-align:middle;margin-right:8px;"> Blog
+      <img src="/leveneenergies/image/Blog.svg" alt="Blog" style="vertical-align:middle;margin-right:8px;"> Blog
     </button>
     <button class="tab-btn" data-tab="videos" role="tab" aria-selected="false" aria-controls="panel-videos">
       <i class="fas fa-play-circle"></i> Videos
@@ -234,12 +234,12 @@
 <section class="cta-band">
   <h2>Stay in the Loop</h2>
   <p>Subscribe to our newsletter and be the first to receive updates, press releases, and event announcements from Levene Energies Limited.</p>
-  <a href="contact.html" class="btn btn--green">Get In Touch</a>
+  <a href="/leveneenergies/contact/contact.html" class="btn btn--green">Get In Touch</a>
 </section>
 
 <div id="footer-placeholder"></div>
 <script>
-  fetch('footer.html')
+  fetch('/leveneenergies/components/footer.html')
     .then(r => r.text())
     .then(html => document.getElementById('footer-placeholder').innerHTML = html)
     .catch(err => console.error('Failed to load footer:', err));
