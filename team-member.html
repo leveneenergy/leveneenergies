@@ -12,27 +12,24 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" id="og-image" content="" />
     <meta property="og:site_name" content="Levene Energies Limited" />
-    <link rel="shortcut icon" href="/leveneenergies/image/levene-energies.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/leveneenergies/css/style.css" />
-    <link rel="stylesheet" href="/leveneenergies/css/team-member.css" />
+    <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/team-member.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-NNL3J7HCPZ');
-    </script>
-
-
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NNL3J7HCPZ');
+</script>
   </head>
-
+  
   <body>
     <div id="header-placeholder"></div>
     <script>
-      fetch('/leveneenergies/components/header.html')
+      fetch('header.html')
         .then(r => {
           if (!r.ok) throw new Error('Header file not found');
           return r.text();
@@ -102,7 +99,7 @@
       }
     </script>
 
-   
+    <!-- Profile body (populated from Sanity) -->
     <div id="profile-root">
       <div class="profile-loading">
         <i class="fas fa-spinner fa-spin" style="color:var(--navy);opacity:0.4;"></i>
@@ -112,14 +109,13 @@
 
     <div id="footer-placeholder"></div>
     <script>
-      fetch('/leveneenergies/components/footer.html')
+      fetch('footer.html')
         .then(r => r.text())
         .then(html => document.getElementById('footer-placeholder').innerHTML = html)
         .catch(err => console.error('Failed to load footer:', err));
     </script>
 
     <script>
-  
       function esc(s) {
         return String(s || "")
           .replace(/&/g,"&amp;")
@@ -158,15 +154,14 @@
         return html;
       }
 
-    
       const CATEGORY_META = {
         "board-of-directors": {
           label: "Board of Directors",
-          href: "/leveneenergies/team/management.html#board",
+          href:  "./management.html#board",
         },
         "executive-team": {
           label: "Executive Team",
-          href: "/leveneenergies/team/management.html#executive",
+          href:  "./management.html#executive",
         },
       };
 
@@ -183,7 +178,6 @@
           ".rich-text p, .rich-text h2, .rich-text h3, .rich-text h4, .rich-text ul, .rich-text blockquote"
         ).forEach(el => observer.observe(el));
       }
-
 
       function paint(m) {
         document.title = `${m.name} - Levene Energies Limited`;
@@ -218,7 +212,6 @@
             <div class="sub-main-content">
               <div class="sub-main-grid">
 
-                <!-- Left: sticky photo column -->
                 <div class="sub-main-image">
                   <div class="img-bracket-wrap">${photoInner}</div>
                   <div class="sub-back-actions">
@@ -229,7 +222,6 @@
                   ${socialLinks ? `<div class="profile-social">${socialLinks}</div>` : ""}
                 </div>
 
-                <!-- Right: bio column -->
                 <div class="sub-main-text">
                   <div class="profile-role">${esc(m.title || "")}</div>
                   <h1 class="profile-name">${esc(m.name)}</h1>
@@ -258,14 +250,13 @@
             <i class="fas fa-exclamation-circle" style="color:var(--navy);opacity:0.3;font-size:3rem;"></i>
             <h2 style="font-family:var(--font-display);color:var(--navy);margin:1rem 0;">Profile Not Found</h2>
             <p>This team member's profile hasn't been added yet.</p>
-            <a href="/leveneenergies/" class="btn btn--primary" style="margin-top:2rem;">Back to Home</a>
+            <a href="./index.html" class="btn btn--primary" style="margin-top:2rem;">Back to Home</a>
           </div>`;
       }
 
-
       (async () => {
         const slug = new URLSearchParams(location.search).get("slug")?.trim();
-        if (!slug) { location.href = "/leveneenergies/"; return; }
+        if (!slug) { location.href = "./index.html"; return; }
 
         const BASE = "https://ilajnehi.apicdn.sanity.io/v2025-06-01/data/query/production";
         const q = `*[_type=="teamMember" && slug.current=="${slug}"][0]{
@@ -276,7 +267,7 @@
 
         try {
           const res = await fetch(`${BASE}?query=${encodeURIComponent(q)}`);
-          if(!res.ok) throw new Error("Fetch failed");
+          if (!res.ok) throw new Error("Fetch failed");
           const { result } = await res.json();
           if (result) paint(result);
           else showError();

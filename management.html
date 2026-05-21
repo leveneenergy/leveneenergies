@@ -12,11 +12,11 @@
     <meta property="og:description" content="Meet the Board of Directors and Executive Team of Levene Energies Limited." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Levene Energies Limited" />
-    <link rel="shortcut icon" href="/leveneenergies/image/levene-energies.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/leveneenergies/css/style.css" />
-    <link rel="stylesheet" href="/leveneenergies/css/management.css" />
+    <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/management.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-       <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -29,7 +29,7 @@
   <body class="mgt-page">
     <div id="header-placeholder"></div>
     <script>
-      fetch('/leveneenergies/components/header.html')
+      fetch("header.html")
         .then(r => { if (!r.ok) throw new Error("Header not found"); return r.text(); })
         .then(html => {
           document.getElementById("header-placeholder").innerHTML = html;
@@ -91,7 +91,7 @@
         <h1>Management</h1>
         <p>The people driving strategy, governance, and growth across Levene Energies Limited.</p>
         <div class="breadcrumb">
-          <a href="/leveneenergies/">Home</a><span>/</span><span>Management</span>
+          <a href="index.html">Home</a><span>/</span><span>Management</span>
         </div>
       </div>
     </section>
@@ -131,7 +131,7 @@
 
     <div id="footer-placeholder"></div>
     <script>
-      fetch('/leveneenergies/components/footer.html')
+      fetch("footer.html")
         .then(r => r.ok ? r.text() : "")
         .then(html => { document.getElementById("footer-placeholder").innerHTML = html; })
         .catch(() => {});
@@ -201,7 +201,7 @@
             </div>`;
 
           card.addEventListener("click", () => {
-            if (m.slug) window.location.href = `/leveneenergies/team/team-member.html?slug=${encodeURIComponent(m.slug)}`;
+            if (m.slug) window.location.href = `team-member.html?slug=${encodeURIComponent(m.slug)}`;
           });
           card.style.cursor = "pointer";
           grid.appendChild(card);
@@ -230,7 +230,7 @@
       }
 
       (async () => {
-     
+        /* Board */
         try {
           const board = await fetchMembers("board-of-directors");
           renderCards(board, "board-root");

@@ -23,11 +23,11 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://ilajnehi.apicdn.sanity.io">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="shortcut icon" href="/leveneenergies/image/levene-energies.png" type="image/x-icon">
-  <link rel="stylesheet" href="/leveneenergies/css/style.css"/>
-  <link rel="stylesheet" href="/leveneenergies/css/post.css"/>
+  <link rel="shortcut icon" href="./image/levene-energies.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.css"/>
+  <link rel="stylesheet" href="./css/post.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-     <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNL3J7HCPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -39,7 +39,7 @@
 <body>
 <div id="header-placeholder"></div>
 <script>
-  fetch('/leveneenergies/components/header.html')
+  fetch('header.html')
     .then(r => {
       if (!r.ok) throw new Error('Header file not found');
       return r.text();
@@ -124,7 +124,7 @@
 <div id="footer-placeholder"></div>
 
 <script>
-  fetch('/leveneenergies/components/footer.html')
+  fetch('footer.html')
     .then(r => r.text())
     .then(html => document.getElementById('footer-placeholder').innerHTML = html)
     .catch(err => console.error('Failed to load footer:', err));
@@ -212,7 +212,7 @@ function paint(post) {
     "datePublished": post.publishedAt || new Date().toISOString(),
     "dateModified": post.publishedAt || new Date().toISOString(),
     "author": { "@type": "Organization", "name": "Levene Energies Limited", "url": window.location.origin },
-    "publisher": { "@type": "Organization", "name": "Levene Energies Limited", "logo": { "@type": "ImageObject", "url": window.location.origin + "/leveneenergies/image/levene-energies.png" } }
+    "publisher": { "@type": "Organization", "name": "Levene Energies Limited", "logo": { "@type": "ImageObject", "url": window.location.origin + "/image/levene-energies.png" } }
   };
   Object.keys(structuredData).forEach(key => structuredData[key] === undefined && delete structuredData[key]);
   let scriptTag = document.querySelector('script[type="application/ld+json"]');
@@ -223,7 +223,7 @@ function paint(post) {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": window.location.origin },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": window.location.origin + "/leveneenergies/media/media.html#blog" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": window.location.origin + "/media.html#blog" },
       { "@type": "ListItem", "position": 3, "name": post.title, "item": postUrl }
     ]
   };
@@ -244,8 +244,8 @@ function paint(post) {
         ${post.publishedAt ? `<span><i class="fas fa-calendar"></i> ${fmt(post.publishedAt)}</span>` : ''}
       </div>
       <div class="breadcrumb" style="margin-top:2rem;">
-        <a href="/leveneenergies/">Home</a><span>/</span>
-        <a href="/leveneenergies/media/media.html#blog">Blog</a><span>/</span>
+        <a href="./index.html">Home</a><span>/</span>
+        <a href="./media.html#blog">Blog</a><span>/</span>
         <span class="current">${esc(post.title)}</span>
       </div>
     </div>
@@ -268,7 +268,7 @@ function paint(post) {
 
   document.getElementById('pr-body-wrap').innerHTML = `
   <div class="pr-outer">
-    <a href="/leveneenergies/media/media.html#blog" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+    <a href="./media.html#blog" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
     <div class="pr-columns">
       ${imgColHtml}
       <div class="pr-panel">
@@ -280,7 +280,7 @@ function paint(post) {
         </div>
         <div class="pr-body">${bodyHtml}</div>
         <div class="pr-actions">
-          <a href="/leveneenergies/media/media.html#blog" class="btn btn--outline-dark">All Articles</a>
+          <a href="./media.html#blog" class="btn btn--outline-dark">All Articles</a>
         </div>
       </div>
     </div>
@@ -298,7 +298,7 @@ function paint(post) {
   const slug = new URLSearchParams(location.search).get('slug')?.trim();
   if (!slug) {
     document.getElementById('pr-hero-wrap').innerHTML = '';
-    document.getElementById('pr-body-wrap').innerHTML = `<div class="pr-loading"><i class="fas fa-exclamation-circle"></i><h2 style="color:var(--navy);margin-bottom:1rem;">No article selected</h2><p>Please choose a post from the <a href="/leveneenergies/media/media.html#blog">blog</a>.</p></div>`;
+    document.getElementById('pr-body-wrap').innerHTML = `<div class="pr-loading"><i class="fas fa-exclamation-circle"></i><h2 style="color:var(--navy);margin-bottom:1rem;">No article selected</h2><p>Please choose a post from the <a href="./media.html#blog">blog</a>.</p></div>`;
     return;
   }
 
@@ -314,7 +314,7 @@ function paint(post) {
   } catch (err) {
     console.error('Post load error:', err);
     document.getElementById('pr-hero-wrap').innerHTML = '';
-    document.getElementById('pr-body-wrap').innerHTML = `<div class="pr-loading"><i class="fas fa-exclamation-triangle"></i><h2 style="color:var(--navy);margin-bottom:1rem;">Article Not Found</h2><p style="margin-bottom:2rem;">This post may have been removed or is not available.</p><a href="/leveneenergies/media/media.html#blog" class="btn btn--primary">Back to Blog</a></div>`;
+    document.getElementById('pr-body-wrap').innerHTML = `<div class="pr-loading"><i class="fas fa-exclamation-triangle"></i><h2 style="color:var(--navy);margin-bottom:1rem;">Article Not Found</h2><p style="margin-bottom:2rem;">This post may have been removed or is not available.</p><a href="./media.html#blog" class="btn btn--primary">Back to Blog</a></div>`;
   }
 })();
 </script>

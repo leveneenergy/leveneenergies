@@ -39,6 +39,7 @@ export default defineType({
       options: { hotspot: true },
       description: 'Primary image shown on the LEFT side of the main content section',
     }),
+  
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
@@ -61,7 +62,7 @@ export default defineType({
       options: {
         list: [
           { title: 'Upstream', value: 'upstream' },
-          { title: 'Midstream', value: 'midstream' },
+          { title: 'Gas & Power', value: 'gas' },
           { title: 'Renewables', value: 'renewables' },
           { title: 'Trading', value: 'trading' },
         ],
