@@ -866,6 +866,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
     <script>/**
 * @license
 * Copyright 2010-2021 Three.js Authors
@@ -1183,14 +1184,18 @@
  <label>What are you looking for?</label>
  <div class="chk"><label><input type="checkbox" value="Solar PV">Solar PV</label><label><input type="checkbox" value="Battery storage">Storage</label><label><input type="checkbox" value="Watergen">Water</label></div>
  <label for="ft">Timeline</label><select id="ft"><option>Exploring</option><option>Within 12 months</option><option>Within 6 months</option><option>Ready now</option></select>
+ <div id="recaptcha-lead" style="margin:14px 0 4px;transform-origin:0 0"></div>
  <div class="err" id="err"></div>
  <div class="row"><button class="ghost" id="cx">Close</button><button class="cta" id="send">Send to Levene</button></div>`;
             $("#modal").classList.add("on");
+            renderRecaptcha();
             $("#cx").onclick = () => $("#modal").classList.remove("on");
             $("#send").onclick = () => {
                 const name = $("#fn").value.trim(), mail = $("#fe").value.trim();
                 if (!name || !/^\S+@\S+\.\S+$/.test(mail)) { $("#err").textContent = "Add your name and a valid email to continue."; return }
                 const payload = { island: I.n, name, org: $("#fo").value.trim(), email: mail, interests: [...document.querySelectorAll(".chk input:checked")].map(x => x.value), timeline: $("#ft").value, build: { solar: n("solar"), bess: n("bess"), water: n("water") } };
+                const token = (window.grecaptcha && recaptchaWidget !== null) ? grecaptcha.getResponse(recaptchaWidget) : "";
+                if (!token) { $("#err").textContent = "Please confirm you are not a robot."; return }
                 const btn = $("#send"); btn.disabled = true; btn.textContent = "Sending…"; $("#err").textContent = "";
                 submitLead(payload).then(() => {
                     $("#sheet").innerHTML = `<h3>Thank you, ${name.split(" ")[0]}</h3><p>The Levene team will be in touch about ${I.n}.</p><div class="row"><button class="cta" id="cx2">Keep exploring</button></div>`;
@@ -1198,13 +1203,29 @@
                 }).catch(e => {
                     console.error("Levenis EmailJS error", e);
                     btn.disabled = false; btn.textContent = "Send to Levene";
+                    if (window.grecaptcha && recaptchaWidget !== null) grecaptcha.reset(recaptchaWidget);
                     $("#err").textContent = "Sorry, we could not send your message. Please try again.";
                 });
             };
         }
+        /* reCAPTCHA (v2 checkbox) */
+        const RECAPTCHA_SITE_KEY = "6LcFZfMrAAAAAN83GfWDGh3yVZPqqIVrN3Gkup97";
+        let recaptchaWidget = null, recaptchaReady = false;
+        window.onRecaptchaLoad = function () { recaptchaReady = true; if ($("#recaptcha-lead")) renderRecaptcha(); };
+        function renderRecaptcha() {
+            recaptchaWidget = null;
+            const el = $("#recaptcha-lead");
+            if (!el) return;
+            if (!recaptchaReady || !window.grecaptcha) { el.textContent = "Loading verification…"; return }
+            el.textContent = "";
+            recaptchaWidget = grecaptcha.render(el, { sitekey: RECAPTCHA_SITE_KEY });
+            /* shrink the 304px widget on very narrow screens */
+            const w = $("#sheet").clientWidth - 40;
+            el.style.transform = w < 304 ? "scale(" + Math.max(w / 304, .6) + ")" : "";
+        }
         /* EmailJS configuration */
         const EMAILJS_SERVICE_ID = "service_z5mkh4p";
-        const EMAILJS_TEMPLATE_ID = "template_zc2o69i"; 
+        const EMAILJS_TEMPLATE_ID = "template_zc2o69i";
         const EMAILJS_PUBLIC_KEY = "4gIDa5hRl0xxLt5ys";
         function submitLead(p) {
             const b = p.build, params = {
@@ -1222,6 +1243,7 @@
                 build_solar: b.solar, build_bess: b.bess, build_water: b.water,
                 message: "Island: " + p.island + "\nName: " + p.name + "\nOrganisation: " + (p.org || "—") + "\nEmail: " + p.email + "\nInterests: " + (p.interests.join(", ") || "—") + "\nTimeline: " + p.timeline + "\nBuild: " + b.solar + " solar, " + b.bess + " battery storage, " + b.water + " Watergen units"
             };
+            params["g-recaptcha-response"] = grecaptcha.getResponse(recaptchaWidget);
             if (!window.emailjs) return Promise.reject(new Error("EmailJS SDK not loaded"));
             return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params, { publicKey: EMAILJS_PUBLIC_KEY });
         }
